@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define radio 3e9
+#define microwaves 3e12
+#define infrared 4.3e14
+#define visible 7.5e14
+#define ultraviolet 3e17
+#define xray 3e19
+#define gama 3e19
+
+int main()
+{
+    float rad=0;
+    printf("Digite o valor em Hz da frequência da radiação\n");
+    if(scanf("%f", &rad)<1){
+        printf("Não consegui ler um valor... Digite outro.\n");
+        scanf("%*s");
+        main();
+    }
+    if(rad<radio){
+        printf("A frequência %f corresponde a uma radio wave", rad);
+        return 0;}
+    else if(rad<microwaves){
+        printf("A frequência %f corresponde a uma microwave", rad);
+        return 0;}
+    else if(rad<infrared){
+        printf("A frequência %f corresponde a uma infrared light", rad);
+        return 0;}
+    else if(rad<visible){
+        printf("A frequência %f corresponde a visible light", rad);
+        return 0;}
+    else if(rad<ultraviolet){
+        printf("A frequência %f corresponde a uma ultraviolet light", rad);
+        return 0;}
+    else if(rad<xray){
+        printf("A frequência %f corresponde a x-rays", rad);
+        return 0;}
+    else
+        printf("A frequência %f corresponde a uma gamma ray", rad);
+
+    return 0;
+}
