@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    float num=0;
+    int arredondamento=0;
+    printf("Por favor digite um número decimal para ser arredondado\n");
+    if(scanf("%f", &num)<1){
+    printf("Não consegui ler um valor... Digite outro.\n");
+    scanf("%*s");
+    main();
+    }
+    do{
+        printf("Pretende arredondar com quantas casa decimais?\n");
+        if(scanf("%d", &arredondamento)<1){
+            printf("Não consegui ler um valor... Digite outro.\n");
+            scanf("%*s");
+            arredondamento=-1;}
+        if(arredondamento>0 && arredondamento<8)
+            printf("O valor %f arredondado com %d casas decimais fica: %.*f", num, arredondamento, arredondamento, num);
+        else
+            printf("Valor inválido\n");
+      }
+    while(!(arredondamento>0 && arredondamento<8));
+    return 0;
+}
