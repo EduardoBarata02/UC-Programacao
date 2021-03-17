@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int seg=0,horas=0,min=0;
+    printf("Por favor digite o número de segundos que pretende converter:\n");
+    if (scanf("%d",&seg)<1){
+        printf("Não consegui ler um número! Tenta de novo\n");
+        scanf("%*s");
+        main();
+        }
+    if(seg<0)
+    {
+        printf("Número inválido de segundos, por favor digite um valor superior ou igual a 0\n");
+        main();
+    }
+    horas = seg/3600;
+    min = (float) seg/3600 - horas;
+    min = min*60;
+    seg = (seg-(horas*3600-min*60));
+    printf("%d horas %d minutos %d segundos", horas, min, seg);
+
+    return 0;
+}
