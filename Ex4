@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <stdlib.h>
+int verificacao();
+
+int main()
+{
+    int c=0, d=0, u=0,flag=0;
+    printf("Digite 3 valores (de 0 a 9) separadamente de forma a formar 1 número de 3 digitos:\n");
+    c= verificacao();
+    d= verificacao();
+    u= verificacao();
+    printf("O dobro do número %d%d%d ",c,d,u);
+    u=u*2;
+    if(u>9){
+        flag++;
+        u=u-10;
+    }
+    d=d*2+flag;
+    flag=0;
+    if(d>9){
+        flag++;
+        d=d-10;}
+    c=c*2 +flag;
+    printf("é %d%d%d",c,d,u);
+
+}
+
+int verificacao()
+{
+    int i=0;
+    if(scanf("%d",&i)<1){
+        printf("Não consegui ler um valor... Por favor digita outro\n");
+        scanf("%*s");
+        verificacao();
+    }
+    if(i<0 || i>9){
+        printf("Valor inválido, digite outro.\n");
+        verificacao();
+    }
+    else
+    return i;
+}
