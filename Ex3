@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+float verificacao();
+
+int main()
+{
+    float angulo=0, velocidade=0, altura=0,temp;
+    printf("Por favor idique os seguintes valores:\nO ângulo de lançamento: ");
+    angulo=verificacao();
+    printf("A velocidade inicial: ");
+    velocidade=verificacao();
+    printf("A altura do teto: ");
+    altura=verificacao();
+    angulo = (angulo*M_PI)/180;
+    printf("O cesto deve estar a: %f metros", (pow(velocidade,2)*sin(2*angulo)/9.8));
+    temp = pow(velocidade,2)*pow(sin(angulo),2)/(2*9.8);
+    if(temp<altura)
+        printf("\nO projétil não embate no teto.");
+    else
+        printf("\nO projétil embate no teto.");
+    return 0;
+}
+
+float verificacao()
+{
+    float i=0;
+    if(scanf("%f",&i)<1){
+        printf("Não consegui ler um valor... Por favor digita outro\n");
+        scanf("%*s");
+        verificacao();
+    }
+    return i;
+}
