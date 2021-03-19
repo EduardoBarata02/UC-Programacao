@@ -15,7 +15,7 @@ int main()
     printf("Digite o valor em Hz da frequência da radiação\n");
     if(scanf("%f", &rad)<1){
         printf("Não consegui ler um valor... Digite outro.\n");
-        scanf("%*s");
+        fflush(stdin);
         main();
     }
     if(rad<radio){
