@@ -7,7 +7,7 @@ int main()
     printf("Digite o número do mês\n");
     if(scanf("%d", &nmes)<1){
         printf("Não consegui ler um valor... Digite outro.\n");
-        scanf("%*s");
+        fflush(stdin);
         main();
     }
     switch(nmes){
