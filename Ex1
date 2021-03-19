@@ -7,7 +7,7 @@ int main()
     printf("Por favor digite o número de segundos que pretende converter:\n");
     if (scanf("%d",&seg)<1){
         printf("Não consegui ler um número! Tenta de novo\n");
-        scanf("%*s");
+        fflush(stdin);
         main();
         }
     if(seg<0)
