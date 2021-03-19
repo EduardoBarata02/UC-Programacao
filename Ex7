@@ -8,7 +8,7 @@ int main()
     printf("Por favor digite um número decimal para ser arredondado\n");
     if(scanf("%f", &num)<1){
     printf("Não consegui ler um valor... Digite outro.\n");
-    scanf("%*s");
+    fflush(stdin);
     main();
     }
     do{
