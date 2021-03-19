@@ -27,7 +27,7 @@ float verificacao()
     float i=0;
     if(scanf("%f",&i)<1){
         printf("Não consegui ler um valor... Por favor digita outro\n");
-        scanf("%*s");
+        fflush(stdin);
         verificacao();
     }
     return i;
