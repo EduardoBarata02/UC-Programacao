@@ -8,7 +8,7 @@ int main()
     if(scanf("%d %d %d", &hora1, &min1, &seg1)<1)
         {
         printf("Não consegui ler um número! Tenta de novo\n");
-        scanf("%*s");
+        fflush(stdin);
         main();
         }
     if(hora1<0 || hora1>23 || min1<0 || min1>59 || seg1<0 || seg1>59)
@@ -21,7 +21,7 @@ int main()
     if(scanf("%d %d %d", &hora2, &min2, &seg2)<1)
         {
         printf("Não consegui ler um número! Tenta de novo\n");
-        scanf("%*s");
+        fflush(stdin);
         main();
         }
     if(hora2<0 || hora2>23 || min2<0 || min2>59 || seg2<0 || seg2>59)
