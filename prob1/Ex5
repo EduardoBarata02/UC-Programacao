@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <stdlib.h>
+int eprimo(int num);
+
+int main()
+{
+    int primos[168];
+    int count,flag;
+    for(count=1; count<1000; count++){
+        if(eprimo(count)==1){
+            primos[flag]=count;
+            flag++;
+        }
+    }
+    printf("A lista de primos casados é:\n");
+    flag=1;
+    for(count=0;count<168;count++){
+        if(primos[count]==primos[count+1]-2){
+            printf("%dº Par: %d com %d \n", flag, primos[count], primos[count+1]);
+            flag++;}
+    }
+
+    return 0;
+}
+
+int eprimo(int num){
+    int cont, flag=0;
+    for (cont=1;cont<=num;cont++){
+        if((num%cont)==0)
+            flag++;
+    }
+    if(flag==2)
+        return 1;
+    else
+        return 0;
+}
