@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+
+int main()
+{
+    int size=0, count;
+    printf("Digite um conjunto de caracteres.\n");
+    char cc[100];
+    fflush(stdin);
+    fgets(cc, 100, stdin);
+    while(cc[size]!= '\0'){
+        size++;
+    }
+    for(count=0; count<size; count++){
+        if(cc[count]>=97 && cc[count]<=122)
+            cc[count]= cc[count]-32;
+    }
+    printf("%s", cc);
+    return 0;
+}
