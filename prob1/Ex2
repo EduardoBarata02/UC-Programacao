@@ -5,33 +5,49 @@ int verificacao();
 
 int main()
 {
-    int num=0, count, flag=0, total=0;
-    float mean;
-    printf("Digite um número natural\n");
-    num = verificacao();
-    printf("Os divisores de %d são:", num);
-    for (count=1;count<=num;count++){
-        if((num%count) == 0){
-            flag++;
-            total=total+count;
-            printf(" %d", count);
+    int mes=0;
+    do{
+    printf("Digite o número de um mês: ");
+    mes= verificacao();
+    switch(mes)
+    {
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:{
+                printf("O mês %d possui 31 dias.\n", mes);
+                break;
+            }
+            case 4:
+            case 6:
+            case 9:
+            case 11:{
+                printf("O mês %d possui 30 dias.\n", mes);
+                break;
+            }
+            case 2:{
+                printf("O mês %d possui 29 dias.\n", mes);
+                break;
+            }
+            default:
+            printf("O programa será terminado.\n");
+
+
         }
-    }
-    mean= (float) total/flag;
-    printf("\nO valor médio desses divisores é: %.3f", mean);
+
+
+    }while (mes>=1 && mes<=12);
     return 0;
 }
-
 
 int verificacao(){
     int i=0;
     if(scanf("%d",&i)<1){
         printf("Não consegui ler um número... Digite outro\n");
         scanf("%*s");
-        verificacao();
-    }
-    else if(i<=0){
-        printf("O número que digitou não é natural, digite um valor superior a 0.\n");
         verificacao();
     }
     else
