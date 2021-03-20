@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int verificacao();
+
+int main()
+{
+    int num=0, count, flag=0, total=0;
+    float mean;
+    printf("Digite um número natural\n");
+    num = verificacao();
+    printf("Os divisores de %d são:", num);
+    for (count=1;count<=num;count++){
+        if((num%count) == 0){
+            flag++;
+            total=total+count;
+            printf(" %d", count);
+        }
+    }
+    mean= (float) total/flag;
+    printf("\nO valor médio desses divisores é: %.3f", mean);
+    return 0;
+}
+
+
+int verificacao(){
+    int i=0;
+    if(scanf("%d",&i)<1){
+        printf("Não consegui ler um número... Digite outro\n");
+        scanf("%*s");
+        verificacao();
+    }
+    else if(i<=0){
+        printf("O número que digitou não é natural, digite um valor superior a 0.\n");
+        verificacao();
+    }
+    else
+        return i;
+}
