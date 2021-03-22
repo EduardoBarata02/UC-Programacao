@@ -32,8 +32,10 @@ int main()
     hora1 =hora1-hora2;
     min1= min1-min2;
     seg1= seg1-seg2;
-    if(hora1<0 || min1<0 ||seg1<0)
+    if(hora1<0 || min1<0 ||seg1<0){
     printf("O primeiro tempo é inferior ao segundo\n");
+    return 0;
+    }
     printf("A diferença entre os 2 tempos é de: %d horas, %d minutos, %d segundos",hora1,min1,seg1);
     return 0;
 }
