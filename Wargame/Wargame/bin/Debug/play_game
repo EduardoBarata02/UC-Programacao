@@ -1,0 +1,45 @@
+#!/bin/bash 
+#
+# (C) 2021 Docentes de Programação/MEEC
+#
+# Shell script para correr um jogo de batalha naval entre duas instâncias do programa,
+# produzindo um ficheiro com resultados dos tiros e outro ficheiro com os tiros.
+# Não funciona no modo -p 1, pois o número de peças de cada tipo é aleatório neste modo.
+#
+# na linha de comando, use parametros tais como:
+# -1 1 -2 1 -3 1 -4 1
+# -t 15x24 -d 1 -1 3 -2 3 -3 3 -4 3 -5 2 -6 2 -7 2 -8 2
+# ...
+#
+# programa a correr
+PROG="./wargame"
+# data actual
+DATA=`date "+%Y%m%d-%H%M%S"`
+# nome do ficheiro com os resultados dos tiros produzido pelo jogo em modo "-j 1"
+FICH1=fich1-$DATA
+# as opções no modo "-j 1" não podem ter o modo de disparo, pelo que se usa um filtro para retirar esta opção
+OPCOES1=`echo $@ | awk '{for (i=1;i<=NF;i++){if($i=="-d"){i++}else{printf("%s ",$i)}}}'`
+# nome do ficheiro com as coordenadas dos tiros produzido pelo jogo em modo "-j 2"
+FICH2=fich2-$DATA
+# nome do "fifo"
+FIFO=/tmp/fifo
+# programa para definir buffers a zero e evitar deadlocks nos pipes
+BUFFER0="stdbuf -i0 -o0"
+# filtro para retirar linhas de comentários
+FILTRO="{if(NF==1){print(\$0)}}"
+#
+# criar o fifo caso não exista
+if (! [ -p $FIFO ] ); then
+  mkfifo $FIFO
+fi
+if (! [ -p $FIFO ] ); then
+  echo Não consegui criar o FIFO. Não é possível correr o jogo
+  exit 1 
+fi
+#
+# ignorar SIGPIPE para os processos correrem até ao fim
+trap '' SIGPIPE
+# correr os programas, ligando-os através de pipes e do fifo
+# o filtro "awk" só deixa passar entre um programa e o outro linhas com uma única string (jogadas e resultados)
+$BUFFER0 $PROG -p 2 $OPCOES1 -j 1 < $FIFO | $BUFFER0 tee $FICH1 | $BUFFER0 awk '{if(NF==1){print($0)}}' | $BUFFER0 $PROG -p 2 $@ -j 2 | $BUFFER0 tee $FICH2 | $BUFFER0 awk '{if(NF==1){print($0)}}' > $FIFO
+

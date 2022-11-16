@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1617200107 source:/media/sf_Programacao/Projetos de programação/Projeto/Projeto.1teste/main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+
+1618067670 source:/media/sf_Programacao/Projetos de programação/Projeto/Wargame/main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+
+1618957901 source:/media/sf_Programacao_-_Copy/Projetos de programação/Projeto/Wargame/main.c
+	<getopt.h>
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<unistd.h>
+	<string.h>
+
